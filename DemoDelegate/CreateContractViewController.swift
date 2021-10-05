@@ -146,15 +146,16 @@ class CreateContractViewController: UIViewController, UITableViewDataSource, UIT
             func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CreateContractUITableViewCell", for: indexPath) as! CreateContractUITableViewCell
                 cell.delegate = self
-                cell.index = indexPath.row
                 cell.titleTextField.text = number
                 if indexPath.section == 0 {
                     cell.titleLabel.text = titleLable[indexPath.row]
                     cell.unitLabel.text = unitLable[indexPath.row]
+                    cell.index = indexPath.row
                     return cell
 
                 } else {
                     cell.titleLabel.text = inforPersonLable[indexPath.row]
+                    cell.index = indexPath.row
                     return cell
 
                 }
