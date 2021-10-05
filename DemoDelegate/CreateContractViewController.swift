@@ -37,7 +37,7 @@ class CreateContractViewController: UIViewController, UITableViewDataSource, UIT
             }()
     
     var index = 0
-
+    var number = ""
             
             let titleLable = ["Hình thức vay","Số tiền cho vay","Lãi suất","Hạn vay","Hình thức trả nợ"]
             let unitLable = ["","VNĐ","%","Tháng",""]
@@ -101,6 +101,7 @@ class CreateContractViewController: UIViewController, UITableViewDataSource, UIT
     @objc func goToHomePageVC() {
 //        Tạo màn hình và push
 
+        print(number)
         }
 
             func numberOfSections(in tableView: UITableView) -> Int {
@@ -146,6 +147,7 @@ class CreateContractViewController: UIViewController, UITableViewDataSource, UIT
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CreateContractUITableViewCell", for: indexPath) as! CreateContractUITableViewCell
                 cell.delegate = self
                 cell.index = indexPath.row
+                cell.titleTextField.text = number
                 if indexPath.section == 0 {
                     cell.titleLabel.text = titleLable[indexPath.row]
                     cell.unitLabel.text = unitLable[indexPath.row]
