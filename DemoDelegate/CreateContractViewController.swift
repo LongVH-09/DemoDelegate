@@ -7,7 +7,8 @@
 
 import UIKit
 
-class CreateContractViewController: UIViewController {
+class CreateContractViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
 
         let containerView: UIView = {
                 let view = UIView()
@@ -45,6 +46,8 @@ class CreateContractViewController: UIViewController {
             override func viewDidLoad() {
                 super.viewDidLoad()
 
+                tableView.delegate = self
+                tableView.dataSource = self
                 setupLayout()
                 goToHomePageVC()
             }
@@ -98,11 +101,8 @@ class CreateContractViewController: UIViewController {
     @objc func goToHomePageVC() {
 //        Tạo màn hình và push
 
-    }
-
         }
 
-        extension CreateContractViewController: UITableViewDataSource, UITableViewDelegate {
             func numberOfSections(in tableView: UITableView) -> Int {
                 return 2
             }
@@ -145,7 +145,7 @@ class CreateContractViewController: UIViewController {
             func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CreateContractUITableViewCell", for: indexPath) as! CreateContractUITableViewCell
                 cell.delegate = self
-                cell.index = [indexPath.section][indexPath.row]
+                cell.index = indexPath.row
                 if indexPath.section == 0 {
                     cell.titleLabel.text = titleLable[indexPath.row]
                     cell.unitLabel.text = unitLable[indexPath.row]
@@ -157,15 +157,12 @@ class CreateContractViewController: UIViewController {
 
                 }
             }
-
 }
 extension CreateContractViewController: CellCreateContractDelegate {
     func createContractTextField(index: Int) {
         self.index = index
         goToHomePageVC()
     }
-    
-    
 
 }
 
